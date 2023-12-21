@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import '../assets/style/JasaNotaris.css'
 import Cookies from 'js-cookie'
 
-export default function JasaNotaris() {
+function JasaNotaris() {
 
     const [notaris, setNotaris] = useState([]);
 
@@ -72,3 +72,5 @@ export default function JasaNotaris() {
         </>
     )
 }
+
+export default JasaNotaris;

@@ -23,7 +23,7 @@ const Admin_listpesanan = () => {
 
       <div className="col-md-9">
         <div className="ml-4">
-          <p className="text-success fs-4 display-4">List Pesanan Property</p>
+          <p className="text-black fs-4 display-4">List Pesanan Property</p>
 
           <div className="row mt-2">
             {/* Kolom 1 */}
@@ -46,8 +46,8 @@ const Admin_listpesanan = () => {
                 <div className="p-4 bg-light border rounded-lg shadow-md"></div>
                 <div className="bg-secondary w-40 h-32 rounded mb-4"></div>
                 <div className="d-flex justify-content-between">
-                  <p className="fs-1 text-black font-weight-bold mr-2">120</p>
-                  <p className="text-sm m-2 text-black">Butuh Verifikasi</p>
+                  <p className="fs-1 text-black font-weight-bold mr-2">20</p>
+                  <p className="text-sm m-2 text-black">Terverifikasi</p>
                 </div>
               </div>
             </div>
@@ -59,8 +59,8 @@ const Admin_listpesanan = () => {
                 <div className="p-4 bg-light border rounded-lg shadow-md"></div>
                 <div className="bg-secondary w-40 h-32 rounded mb-4"></div>
                 <div className="d-flex justify-content-between">
-                  <p className="fs-1 text-black font-weight-bold mr-2">120</p>
-                  <p className="text-sm m-2 text-black">Butuh Verifikasi</p>
+                  <p className="fs-1 text-black font-weight-bold mr-2">20</p>
+                  <p className="text-sm m-2 text-black">Terjual</p>
                 </div>
               </div>
             </div>
@@ -72,8 +72,8 @@ const Admin_listpesanan = () => {
                 <div className="p-4 bg-light border rounded-lg shadow-md"></div>
                 <div className="bg-secondary w-40 h-32 rounded mb-4"></div>
                 <div className="d-flex justify-content-between">
-                  <p className="fs-1 text-black font-weight-bold mr-2">120</p>
-                  <p className="text-sm m-2 text-black">Butuh Verifikasi</p>
+                  <p className="fs-1 text-black font-weight-bold mr-2">08</p>
+                  <p className="text-sm m-2 text-black">Gagal</p>
                 </div>
               </div>
             </div>

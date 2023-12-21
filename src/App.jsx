@@ -11,6 +11,7 @@ import PropertyDetail from "./pages/PropertyDetail"
 import SearchResult from "./pages/SearchResult"
 import Favorite from "./pages/Favorite"
 import JasaNotaris from "./pages/JasaNotaris"
+import DataNotaris from "./pages/DataNotaris"
 import Blog from "./pages/Blog"
 import DetailBlog from "./pages/DetailBlog"
 import JualProperti from "./pages/JualProperti"
@@ -45,7 +46,8 @@ function App() {
       <Route path="/detail" element={<PropertyDetail />}/>
       <Route path="/search-result" element={<SearchResult />}/>
       <Route path="/favorite" element={<Favorite />}/>
-      <Route path="/jasa-notaris" element={<JasaNotaris />}/>
+      <Route path="/jasanotaris" element={<JasaNotaris />}/>
+      <Route path="/DataNotaris" element={<DataNotaris />}/>
       <Route path='/blog' element={<Blog />} />
       <Route path='/detailblog' element={<DetailBlog />} />
       <Route path='/jualproperti' element={<JualProperti />} />
