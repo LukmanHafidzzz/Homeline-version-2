@@ -65,7 +65,6 @@ class AuthController {
                 nama: checkNamaOrEmail[0][0].nama,
                 email: checkNamaOrEmail[0][0].email,
                 no_hp: checkNamaOrEmail[0][0].no_hp,
-                no_hp: checkNamaOrEmail[0][0].no_hp,
             }
         });
         

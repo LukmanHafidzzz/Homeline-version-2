@@ -16,8 +16,17 @@ import { AiFillInstagram } from "react-icons/ai";
 
 //Route
 import { Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 export default function ContactUs() {
+    const nama = Cookies.get('nama')
+    const email = Cookies.get('email')
+    const no_hp = Cookies.get('no_hp')
+
+    if (!nama) {
+        window.location.href = '/auth/login';
+        return;
+    }
     return (
         <>
             <Container className='p-5'>

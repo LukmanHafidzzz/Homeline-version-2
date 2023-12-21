@@ -7,7 +7,7 @@ export default function CardNotaris(props) {
     return (
         <>
             <Card style={{ width: '19rem' }} className='position-relative card-notaris'>
-                <Image variant="top" src={`/img_data/${props.foto}`} className='border card-notaris-img' />
+                <Image variant="top" src={`/img_data/notaris/${props.foto}`} className='border card-notaris-img' />
                 {/* <Image variant="top" src="/images/notaris3.png" className='border card-notaris-img' /> */}
                 <Card.Body>
                     <Card.Text className='fw-bold'>{props.alamat}</Card.Text>

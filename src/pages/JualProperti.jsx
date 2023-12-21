@@ -2,8 +2,17 @@ import React from "react";
 import NavbarAll from "../components/NavbarAll";
 import { Card, Col, Container, FormSelect, Row } from "react-bootstrap";
 import FooterAll from "../components/FooterAll";
+import Cookies from "js-cookie";
 
 function JualProperti() {
+  const nama = Cookies.get('nama')
+  const email = Cookies.get('email')
+  const no_hp = Cookies.get('no_hp')
+
+  if (!nama) {
+    window.location.href = '/auth/login';
+    return;
+}
   return (
     <>
       <NavbarAll />

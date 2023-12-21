@@ -1,13 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+import { Link, useParams } from 'react-router-dom';
 import { Button, Container, Nav } from 'react-bootstrap';
 import CardBlog from '../components/CardBlog';
 import FooterAll from '../components/FooterAll';
 import NavbarallAdmin from '../components/NavbarallAdmin';
 import Sidebar from '../components/Sidebar';
-import { Link } from 'react-router-dom';
 
 
 function Admin_listblog() {
+    const [blog, setBlog] = useState([]);
+
+    async function getBlog() {
+        try {
+            const response = await axios.get('http://localhost:3052/blog');
+            setBlog(response.data);
+        } catch (error) {
+            console.error('Error fetching blog data:', error);
+        }
+    }
+
+    async function handleDelete(blog_id) {
+      if (confirm('Anda yakin ingin menghapus data?')) {
+        const response = await axios.delete(`http://localhost:3052/blog/delete/${blog_id}`)
+
+        alert(response.data.message);
+        window.location.reload();
+      }
+    }
+
+    useEffect(() => {
+        getBlog();
+    }, []);
+
   return (
     <>
       <NavbarallAdmin/>
@@ -25,26 +50,28 @@ function Admin_listblog() {
                     Tambah Blog
         </button>
         </Link>
-        <div className="card">
-            <div className="card-body">
-                <div className='d-flex gap-4'>
-                    <div>
-                        <img src="/img_data/blog1.png" alt="pic blog" />
-                    </div>
-                    <div className='d-flex' style={{gap:"160px"}}>
-                    <div>
-                        <h4>Tips cari RUmah Dengan Nyaman</h4>
-                        <span style={{color:"grey"}}>dipublikasikan 14 November 2023</span>
-                    </div>
-                    <div class="d-grid gap-1 d-md-flex justify-content-md-end " style={{height:"40px", alignContent:"center"}}>
-                      <Link to={'/Admineditblog'}><button class="btn btn-primary me-md-3" style={{borderRadius:"20px"}} type="button">Edit</button></Link>
-                      <button class="btn btn-danger" style={{borderRadius:"20px"}} type="button">Hapus</button>
-                    </div>
+        { blog.length == 0 ? (
+          <h4>Data Kosong</h4>
+        ) : (blog.data.map((blog, index) => {
+          return (
+            <div className="card" key={index}>
+                <div className="card-body">
+                    <div className='d-flex gap-4'>
+                        <div className='d-flex' style={{gap:"160px"}}>
+                        <div>
+                            <h4>{blog.judul}</h4>
+                            <span style={{color:"grey"}}>dipublikasikan {blog.tgl_publikasi}</span>
+                        </div>
+                        <div class="d-grid gap-1 d-md-flex justify-content-md-end " style={{height:"40px", alignContent:"center"}}>
+                          <Link to={`/Admineditblog/${blog.blog_id}`}><button onClick={() => getDetailBlog(blogItem.blog_id)} class="btn btn-primary me-md-3" style={{borderRadius:"20px"}} type="button">Edit</button></Link>
+                          <button onClick={() => handleDelete(blog.blog_id)} class="btn btn-danger" style={{borderRadius:"20px"}} type="button">Hapus</button>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-         
+          )
+        }))};
         </div>
       <br />
       <br />

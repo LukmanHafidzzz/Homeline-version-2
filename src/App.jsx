@@ -43,12 +43,12 @@ function App() {
       <Route path="/contact-us" element={<ContactUs />}/>
       <Route path="/homepage" element={<Homepage />}/>
       <Route path="/landingpage" element={<Landingpage />}/>
-      <Route path="/detail" element={<PropertyDetail />}/>
+      <Route path="/detail/:rumah_id" element={<PropertyDetail />}/>
       <Route path="/search-result" element={<SearchResult />}/>
       <Route path="/favorite" element={<Favorite />}/>
       <Route path="/jasa-notaris" element={<JasaNotaris />}/>
       <Route path='/blog' element={<Blog />} />
-      <Route path='/detailblog' element={<DetailBlog />} />
+      <Route path='/detailblog/:blog_id' element={<DetailBlog />} />
       <Route path='/jualproperti' element={<JualProperti />} />
       <Route path='/pendaftaran-notaris' element={<Pendaftarannotaris />} />
       <Route path='/Profil' element={<Profil />}/>
@@ -60,7 +60,7 @@ function App() {
       <Route path='/Admin_notaris' element={<Admin_notaris />}/>
       <Route path='/Admin_lihatpelanggan' element={<Admin_lihatpelanggan />}/>
       <Route path='/AdminProfil' element={<Admin_profil />}/>
-      <Route path='/Admineditblog' element={<Admin_editblog />}/>
+      <Route path='/Admineditblog/:blog_id' element={<Admin_editblog />}/>
       <Route path='/Admintambahblog' element={<Admin_tambahblog />}/>
 
       <Route path='/Admin_listblog' element={<Admin_listblog />}/>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -10,7 +11,19 @@ import NavbarAll from '../components/NavbarAll';
 import FooterAll from '../components/FooterAll';
 import { Container } from 'react-bootstrap';
 
+import Cookies from 'js-cookie'
+
 function Profil() {
+  const nama = Cookies.get('nama')
+  const email = Cookies.get('email')
+  const no_hp = Cookies.get('no_hp')
+  const password = Cookies.get('password')
+
+  if (!nama) {
+      window.location.href = '/auth/login';
+      return;
+  }
+
   return (
     <>
       <NavbarAll />
@@ -32,7 +45,7 @@ function Profil() {
                   Nama
                 </Form.Label>
                 <Col sm="10">
-                  <Form.Control type="text" placeholder="Set nama" />
+                  <Form.Control value={nama} type="text" placeholder="Set nama" />
                 </Col>
               </Form.Group>
 
@@ -41,25 +54,17 @@ function Profil() {
                   Email
                 </Form.Label>
                 <Col sm="10">
-                  <Form.Control type="email" placeholder="Enter email" />
+                  <Form.Control type="email" value={email} placeholder="Enter email" />
                 </Col>
               </Form.Group>
 
-              <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                <Form.Label column sm="2">
-                  Kata sandi
-                </Form.Label>
-                <Col sm="10">
-                  <Form.Control type="password" placeholder="Enter sandi" />
-                </Col>
-              </Form.Group>
 
               <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                 <Form.Label column sm="2">
                   NO. telepon
                 </Form.Label>
                 <Col sm="10">
-                  <Form.Control type="tel" placeholder="Enter telepon" />
+                  <Form.Control type="text" value={no_hp} placeholder="Enter telepon" />
                 </Col>
               </Form.Group>
 

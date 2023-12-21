@@ -1,11 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import NavbarAll from '../components/NavbarAll';
 import { Button, Container, Nav } from 'react-bootstrap';
 import CardBlog from '../components/CardBlog';
 import FooterAll from '../components/FooterAll';
+import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 
 export default function Blog() {
+  const nama = Cookies.get('nama')
+  const email = Cookies.get('email')
+  const no_hp = Cookies.get('no_hp')
+
+  if (!nama) {
+    window.location.href = '/auth/login';
+    return;
+}
+
+  const [blog, setBlog] = useState([]);
+
+  async function getBlog() {
+      try {
+          const response = await axios.get('http://localhost:3052/blog');
+          setBlog(response.data);
+      } catch (error) {
+          console.error('Error fetching blog data:', error);
+      }
+  }
+
+  useEffect(() => {
+    getBlog();
+}, []);
+
+  
+
   return (
     <>
       {/* Mintaa gantiin navbar -> jadi navbarUser yaa bang */}
@@ -17,31 +46,19 @@ export default function Blog() {
       <div style={{ textAlign: "center" }}>
         <h3>Blog Homeline</h3> <br /><br />
       </div>
-      <div class="container d-flex justify-content-center">
+      <div class="container d-flex justify-content-start">
         <div class="row">
-          <div class="col">
-            <CardBlog />
-          </div>
-          <div class="col">
-            <CardBlog />
-          </div>
-          <div class="col">
-            <CardBlog />
-          </div>
-        </div>
-      </div>
-      <br />
-      <div class="container d-flex justify-content-center">
-        <div class="row">
-          <div class="col">
-            <CardBlog />
-          </div>
-          <div class="col">
-            <CardBlog />
-          </div>
-          <div class="col">
-            <CardBlog />
-          </div>
+          {blog.length == 0 ? (
+            <h4>Blog Kosong</h4>
+          ) : (blog.data.map((blog, index) => {
+            return (
+              <div class="col" key={index}>
+                <Link to={`/detailblog/${blog.blog_id}`} className='text-decoration-none'>
+                  <CardBlog tanggal={blog.tgl_publikasi} judul={blog.judul} foto={blog.foto}/>
+                </Link>
+              </div>
+            )
+          }))}
         </div>
       </div>
       <br />

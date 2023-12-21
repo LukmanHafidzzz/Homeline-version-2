@@ -11,6 +11,14 @@ import '../assets/style/JasaNotaris.css'
 import Cookies from 'js-cookie'
 
 export default function JasaNotaris() {
+    const nama = Cookies.get('nama')
+    const email = Cookies.get('email')
+    const no_hp = Cookies.get('no_hp')
+
+    if (!nama) {
+        window.location.href = '/auth/login';
+        return;
+    }
 
     const [notaris, setNotaris] = useState([]);
 
