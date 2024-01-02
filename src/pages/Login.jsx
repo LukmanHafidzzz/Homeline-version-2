@@ -22,6 +22,7 @@ import axios from 'axios'
 export default function Login() {
     const [nama, setNama] = useState('')
     const [email, setEmail] = useState('')
+    const [no_hp, setNoHp] = useState('')
     const [password, setPassword] = useState('')
     
     const checkNamaOrEmail = (e) => {
@@ -39,6 +40,7 @@ export default function Login() {
         const result = await axios.post('http://localhost:3052/auth/login', {
             nama,
             email,
+            no_hp,
             password,
         });
         alert(result.data.massage);
@@ -49,6 +51,10 @@ export default function Login() {
                 path: '/',
             });
             Cookies.set('email', result.data.user.email, {
+                expires: new Date(Date.now() + 1000 * 60 * 60),
+                path: '/',
+            });
+            Cookies.set('no_hp', result.data.user.no_hp, {
                 expires: new Date(Date.now() + 1000 * 60 * 60),
                 path: '/',
             });

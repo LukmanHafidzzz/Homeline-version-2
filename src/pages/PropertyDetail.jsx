@@ -8,12 +8,6 @@ import { Link, useParams } from "react-router-dom";
 function PropertyDetail() {
     const params = useParams()
     const [detail, setDetail] = useState([])
-    const [foto, setFoto] = useState([])
-
-    if (!nama) {
-      window.location.href = '/auth/login';
-      return;
-  }
 
     async function getDetail(rumah_id) {
     const result = await axios.get(`http://localhost:3052/properti/detail/${rumah_id}`)
@@ -79,7 +73,7 @@ function PropertyDetail() {
                   <p className="m-0 text-secondary">Listrik</p>
                   <p>{detail.data[0].listrik} watt</p>
                   <p className="m-0 text-secondary">Luas Bangunan</p>
-                  <p>{detail.data[0].luar_bangunan}</p>
+                  <p>{detail.data[0].luas_bangunan}</p>
                 </Col>
                 <Col>
                   <p className="m-0 text-secondary">Interior</p>
